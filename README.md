@@ -192,6 +192,6 @@ This is original application binaries provided by Microsoft, and thus subject to
 
 Strictly speaking, it's not allowed to redistribute these files.
 The motivation lies in documenting an interesting technological feature,
-making it available to the retro community and tech enthousiats, for the sole
+making it available to the retro community and tech enthusiasts, for the sole
 purpose of showcasing historical software capability and it's behaviour.
 
