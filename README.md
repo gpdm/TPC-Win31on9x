@@ -1,4 +1,4 @@
-# TPC-Win31on9x
+# Windows 3.1 Support for Windows 95
 
 Microsoft included the capability to run Windows 3.1 on top of Chicago (Windows 95's development name
 during Beta days).
@@ -45,8 +45,7 @@ Accordingly, the icons have been changed.
   * Windows for Workgroups 3.1/3.11 is also fine
   * Windows 3.0 is not supported
 
-
-# Installing Windows 3.1/3.11
+# Installing Windows 3.1/3.11
 
 Unless you have Windows 3.1x already installed, you can still install it from within Windows 9x,
 but you must exit to MS-DOS mode.
@@ -55,15 +54,14 @@ but you must exit to MS-DOS mode.
 * run `setup.exe` from the Windows 3.1x install media
 	* chose to install Windows 3.1x to a new directory (do NOT, I repeat, do NOT, install it to your current C:\WINDOWS directory!)
 	* when asked, deny Windows 3.1x to change `CONFIG.SYS` and `AUTOEXEC.BAT`, you won't need any changes to these files at all!
-* once done, `exit` from MS-DOS back to Windows 9x
-
+* run `unlock c:` once setup has completed
+* then `exit` from MS-DOS back to Windows 9x
 
 Note: Windows Me doesn't have MS-DOS mode any more.
-But you can restore that using this [community patch](https://github.com/gpdm/TPC-WinMe-DOSMODE).
-Once done, follow the procedure outlined above.
+But you can restore that using this [community patch](https://github.com/gpdm/TPC-WinMe-DOSMODE)
+Follow the procedure outlined above.
 
-
-# Installing this Distribution
+# Installing this Distribution
 
 An INF installer is provided for your convenience.
 This will install all relevant files beneath `C:\WINDOWS\SYSTEM\WIN31`.
@@ -71,8 +69,7 @@ This will install all relevant files beneath `C:\WINDOWS\SYSTEM\WIN31`.
 A Readme file and direct links to the release 116 and 328 directories will be added
 to the Startmenu.
 
-Please follow the additional instructions in the [Readme](README.TXT).
-
+Please follow the additional instructions in the [Readme](README.TXT) on how to make it work.
 
 # Removing this Distribution
 
@@ -115,6 +112,67 @@ Do this only if the original lines accessed the COMM.DRV and MOUSE.DRV files (th
 
 To access Windows 3.1, double-click the icon you just created. Please do not perform Control Panel-related operations from Windows 3.1. However, you can run any application from the Windows 3.1 screen and it will run in a Windows 3.1 environment. To return to Chicago, click on the Chicago icon that will be visible on your Windows 3.1 screen.
 
+# Known Issues
+
+# Mouse not working on Windows Me
+
+Mouse works fine on Windows 95 and Windows 98, but not on Windows Me.
+
+There is currently no known solution to this.
+
+# Control Panel segfaults
+
+That is a known error since the early beta days, and was never resolved.
+
+# MS-DOS Prompt can be started
+
+That is a known error since the early beta days, and was never resolved.
+
+# Build 118 locks up or crashes Windows Me
+
+This was observed multiple times. Try the build 328 files instead, these seem to work.
+
+# Why are other builds not included?
+
+This feature didn't seem to receive significant improvements over the course of Windows Chicago's beta run.
+
+The only significant change was that at some point, the program icon and the label to it shown in Windows 3.1
+where changed from "Return to Chicago" to "Return to Windows 95".
+
+# I thought these binaries wouldn't run on the final Windows 95?
+
+That's true.
+
+In order to make them run, both versions of `WIN31.EXE` have been patched at offsets `0x360h` and `0x827h`.
+The Op-Code `74` was changed to `EB` to bypass the version checks.
+
+Original code segments:
+
+```
+83 F8 04			cmp	ax,4
+74 10				je	$+12h
+```
+
+change to
+
+```
+83 F8 04			cmp	ax,4
+EB 10				jmp	$+12h
+```
+
+and
+
+```
+3D 04 00			cmp	ax,04
+74 0B				je	$+12h
+```
+
+changed to
+
+```
+3D 04 00			cmp	ax,04
+EN 0B				jmp	$+12h
+```
 
 # Acknowledgements, Copyright
 
