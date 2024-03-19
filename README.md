@@ -53,29 +53,33 @@ but you must exit to MS-DOS mode.
 
 * run `lock c:`
 * run `setup.exe` from the Windows 3.1x install media
- * chose to install Windows 3.1x to a new directory
- * when asked, deny Windows 3.1x to change `CONFIG.SYS` and `AUTOEXEC.BAT`, you won't need any changes to these files at all!
+	* chose to install Windows 3.1x to a new directory (do NOT, I repeat, do NOT, install it to your current C:\WINDOWS directory!)
+	* when asked, deny Windows 3.1x to change `CONFIG.SYS` and `AUTOEXEC.BAT`, you won't need any changes to these files at all!
 * once done, `exit` from MS-DOS back to Windows 9x
 
 
-Windows Me doesn't have MS-DOS mode any more.
+Note: Windows Me doesn't have MS-DOS mode any more.
 But you can restore that using this [community patch](https://github.com/gpdm/TPC-WinMe-DOSMODE).
 Once done, follow the procedure outlined above.
 
 
 # Installing this Distribution
 
-An INF installer is provided for your conven
+An INF installer is provided for your convenience.
+This will install all relevant files beneath `C:\WINDOWS\SYSTEM\WIN31`.
+
+A Readme file and direct links to the release 116 and 328 directories will be added
+to the Startmenu.
+
+Please follow the additional instructions in the [Readme](README.TXT).
 
 
+# Removing this Distribution
 
+This package registers with the Software catalog, so you can easily remove it again
+via Control Panel -> Add/remove programs.
 
-
-
-
-
-
-
+NOTE: This will only remove the support files, but not your Windows 3.1 installation residing elsewhere on your hard drive.
 
 
 # Excerpt from original Windows Chicago Beta Release Notes
