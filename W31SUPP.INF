@@ -1,0 +1,143 @@
+; This is the Setup information file to install Windows 3.1 Support for Windows 95
+
+[VERSION]
+AdvancedINF=2.5, %AdvPackWarn%
+signature=$CHICAGO$
+
+
+[DefaultInstall]
+RequiredEngine=SetupAPI,"Fatal Error - missing setupapi.dll"
+;Standard INF Options
+CopyFiles=Install.Copy.Windows.Inf,Install.Copy.Windows.System.Win31,Install.Copy.Windows.System.Win31.116,Install.Copy.Windows.System.Win31.328
+AddReg=Install.AddReg
+UpdateInis=Install.AddShortcuts
+
+
+[Uninstall]
+BeginPrompt=Uninstall.BeginPrompt
+DelFiles=Uninstall.Del.Windows.Inf,Uninstall.Del.Windows.System.Win31,Uninstall.Del.Windows.System.Win31.116,Uninstall.Del.Windows.System.Win31.328
+DelReg=Uninstall.DelReg
+UpdateInis=Uninstall.DelShortcuts
+
+
+
+[DestinationDirs]
+; general locations:
+; 10=Windows, 11=SYSTEM, 12=IOSUBSYS, 13=COMMAND, 14=Control Panel, 15=Printers, 16=Workgroup
+; 17=INF, 18=Help, 19=Administration, 20=Fonts, 21=Viewers, 22=VMM32, 23=Color, 25=Shared
+; 26=Winboot, 27=Machine, 28=Host Winboot, 30=Boot drv root, 31=Root of Boot drv Host
+; 00=Null (new) LDID, 01=Source drv:\path, 02=Temp Setup, 03=Uninstall, 04=Backup
+
+; Install Locations
+Install.Copy.Windows.Inf = 17
+Install.Copy.Windows.System.Win31 = 11,WIN31
+Install.Copy.Windows.System.Win31.116 = 11,WIN31\116
+Install.Copy.Windows.System.Win31.328 = 11,WIN31\328
+
+; Uninstall Locations
+Uninstall.DelWindows.Inf = 17
+Uninstall.Del.Windows.System.Win31 = 11,WIN31
+Uninstall.Del.Windows.System.Win31.116 = 11,WIN31\116
+Uninstall.Del.Windows.System.Win31.328 = 11,WIN31\328
+
+
+[Uninstall.BeginPrompt]
+Prompt = %BeginPromptUninstall%
+ButtonType = <YESNO | OKCANCEL>
+Title = %UpdName%
+
+
+;
+; INSTALL SECTION
+;
+[Install.Copy.Windows.Inf]
+W31SUPP.INF,W31SUPP.INF,,4
+
+[Install.Copy.Windows.System.Win31]
+README.TXT,README.TXT,,4
+
+[Install.Copy.Windows.System.Win31.116]
+DUALMOUS.DRV,DM_116.DRV,,4
+DUALCOMM.DRV,DC_116.DRV,,4
+WIN31.EXE,W31_116.EXE,,4
+WIN31.PIF,WIN31.PIF,,4
+
+[Install.Copy.Windows.System.Win31.328]
+DUALMOUS.DRV,DM_328.DRV,,4
+DUALCOMM.DRV,DC_328.DRV,,4
+WIN31.EXE,W31_328.EXE,,4
+WIN31.PIF,WIN31.PIF,,4
+
+[Install.AddReg]
+; register UNINSTALL key
+HKLM,"SOFTWARE\Microsoft\Windows\CurrentVersion\Uninstall\W31Support","DisplayName",,"%UpdName%"
+HKLM,"SOFTWARE\Microsoft\Windows\CurrentVersion\Uninstall\W31Support","UninstallString",,"RunDLL setupx.dll,InstallHinfSection Uninstall 4 W31SUPP.INF"
+
+[Install.AddShortcuts]
+setup.ini,progman.groups,,"Win3xSupport=Windows 3.1 Support"
+setup.ini,Win3xSupport,,"""Windows 3.1 (Build 116)"",%11%\WIN31\116\"
+setup.ini,Win3xSupport,,"""Windows 3.1 (Build 328)"",%11%\WIN31\328\"
+setup.ini,Win3xSupport,,"""Readme"",%11%\WIN31\README.TXT"
+
+
+;
+; UNINSTALL SECTION
+;
+[Uninstall.DelReg]
+; remove UNINSTALL key
+HKLM,"SOFTWARE\Microsoft\Windows\CurrentVersion\Uninstall\W31Support"
+
+[Uninstall.Del.Windows.Inf]
+W31SUPP.INF
+
+[Uninstall.Del.Windows.System.Win31]
+README.TXT
+
+[Uninstall.Del.Windows.System.Win31.116]
+DUALMOUS.DRV
+DUALCOMM.DRV
+WIN31.EXE
+WIN31.PIF
+
+[Uninstall.Del.Windows.System.Win31.328]
+DUALMOUS.DRV
+DUALCOMM.DRV
+WIN31.EXE
+WIN31.PIF
+
+[Unistall.DelShortcuts]
+setup.ini,progman.groups,,"Win3xSupport=Windows 3.1 Support"
+setup.ini,Win3xSupport,,"""Windows 3.1 (Build 116)"""
+setup.ini,Win3xSupport,,"""Windows 3.1 (Build 328)"""
+setup.ini,Win3xSupport,,"""Readme"""
+
+
+
+; English / Default
+[Strings]
+;Non-localizable
+LANG=		"EN"
+LocaleID=	"UPD"
+Guid=		"{9d93581f-ed31-4b51-9e6f-172b31881a5a}"
+UpdID=		"311561"
+UpdateKey=	"Software\Microsoft\Windows\CurrentVersion\Setup\Updates"
+
+; Localizable strings
+UpdName="Windows 3.1 Support for Windows 95"
+AdvPackWarn="You need a newer version of advpack.dll."
+SrcDiskName="Windows 3.1 Support for Windows 95"
+BeginPromptUninstall="Remove Wondows 3.1 Support for Windows 95?"
+
+[SourceDisksNames]
+55=%SrcDiskName%,"",0
+
+[SourceDisksFiles]
+W31SUPP.INF=55
+README.TXT=55
+WIN31.PIF=55
+W31_328.EXE=55
+W31_116.EXE=55
+DC_116.DRV=55
+DM_116.DRV=55
+DC_328.DRV=55
+DM_328.DRV=55
