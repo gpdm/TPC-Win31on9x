@@ -114,32 +114,32 @@ To access Windows 3.1, double-click the icon you just created. Please do not per
 
 # Known Issues
 
-# Mouse not working on Windows Me
+## Mouse not working on Windows Me
 
 Mouse works fine on Windows 95 and Windows 98, but not on Windows Me.
 
 There is currently no known solution to this.
 
-# Control Panel segfaults
+## Control Panel segfaults
 
 That is a known error since the early beta days, and was never resolved.
 
-# MS-DOS Prompt can be started
+## MS-DOS Prompt can be started
 
 That is a known error since the early beta days, and was never resolved.
 
-# Build 118 locks up or crashes Windows Me
+## Build 115 binaries locks up or crashes Windows Me
 
 This was observed multiple times. Try the build 328 files instead, these seem to work.
 
-# Why are other builds not included?
+## Why are other builds not included?
 
 This feature didn't seem to receive significant improvements over the course of Windows Chicago's beta run.
 
 The only significant change was that at some point, the program icon and the label to it shown in Windows 3.1
 where changed from "Return to Chicago" to "Return to Windows 95".
 
-# I thought these binaries wouldn't run on the final Windows 95?
+## I thought these binaries wouldn't run on the final Windows 95?
 
 That's true.
 
