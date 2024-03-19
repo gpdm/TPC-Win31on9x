@@ -18,7 +18,7 @@ and provide a means to install it to Windows 95, yet even Windows 98 (and, somew
 
 Microsoft speaks about running Windows 3.1 in a VM, technically speaking a [Virtual DOS machine](https://en.wikipedia.org/wiki/Virtual_DOS_machine#DOS-based_VDMs).
 
-This is achieved bascially by four files:
+This is achieved basically by four files:
 
  * `win31.exe`, a custom loader application (similar to `win.com`), specifically to make Windows 3.1 run on Windows 95
  * `win31.pif`, a PIF file for said loader
@@ -138,6 +138,17 @@ This feature didn't seem to receive significant improvements over the course of 
 
 The only significant change was that at some point, the program icon and the label to it shown in Windows 3.1
 where changed from "Return to Chicago" to "Return to Windows 95".
+
+## Do I really need to copy the files to the Windows 3.1x directory?
+
+Yes. It's not sufficient to just point the PIF's working directory to the Windows 3.1x path.
+You must have them residing in the Windows 3.1x directory or it won't work.
+
+Technically speaking, the two .DRV files don't need to be there, as you could point the
+full path to them in `SYSTEM.INI`.
+
+But to simplify things, I went the easy route, just copying everything into the same spot.
+Follow the [README](README.TXT) as it tells you.
 
 ## I thought these binaries wouldn't run on the final Windows 95?
 
