@@ -126,7 +126,7 @@ UpdateKey=	"Software\Microsoft\Windows\CurrentVersion\Setup\Updates"
 UpdName="Windows 3.1 Support for Windows 95"
 AdvPackWarn="You need a newer version of advpack.dll."
 SrcDiskName="Windows 3.1 Support for Windows 95"
-BeginPromptUninstall="Remove Wondows 3.1 Support for Windows 95?"
+BeginPromptUninstall="Remove Windows 3.1 Support for Windows 95?"
 
 [SourceDisksNames]
 55=%SrcDiskName%,"",0
